@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>form validation</title>
+</head>
+<style>
+    .formdesing {
+        text-align: center;
+    }
+
+    form {
+        border: 4px solid #c95151;
+        padding: 30px;
+        display: inline-block;
+        border-radius: 20px;
+        box-shadow: 0 8px 8px -4px #533838;
+    }
+
+    .first_n {
+        display: block;
+        margin-bottom: 10px;
+        margin-bottom: 20px;
+        height: 27px;
+    }
+
+    #clear {
+        margin-left: 22px;
+    }
+</style>
+
+<body>
+    <div class="formdesing">
+        <h1 style="color:#c95151; text-transform:uppercase;">Login Form</h1>
+        <form name="myform" action='form.html' onsubmit="return validateform()">
+            <span class="first_n"><label> Name:</label>
+                <input type="text" name="fname" size="25" style="height: 30px" method="post" placeholder="Enter your name" id="clear"
+                    class="name1"></span>
+
+            <span class="first_n"><label>Phone No:</label>
+                <input type="tel" action='form.html' size="25" style="height: 30px" name="phoneno" placeholder="Enter your phone_no"
+                    method="post" class="name1"></span>
+
+            <input type="submit" value="Submit" style="height: 30px">
+            <input type="reset" value="Reset" onclick="clearform()" style="height: 30px">
+        </form>
+    </div>
+
+    <script>
+        function clearform() {
+            document.getElementsByClassName("name1").value = "";
+        }
+        function validateform() {
+            //Name validation
+            let Name = document.forms["myform"]["fname"].value;
+
+            (Name == "") ? alert("Name must be filled out") :
+            (!isNaN(Name)) ? alert("Number is Not allow") :
+            (Name.length < 3) ? alert("Enter must be  min 3  character"):
+            (Name.length > 15) ? alert("Enter must be 3 to 15 character"):
+            console.log('Name :', Name);
+
+            // phone validation
+
+            const number = document.forms["myform"]["phoneno"].value;
+
+            (number < 0 || number < 9) ? alert("must be  filled ten number"):
+            (isNaN(number))? alert("Enter Must be Digit"):
+            (number.length != 10) ?alert(" must be 10 digit mobile number is required"):
+            console.log('Phone No :', number);
+
+            return false;
+            // if (Name == "") {
+            //     alert("Name must be filled out");
+            // }
+            // else if (!isNaN(Name)) {
+
+            //     alert("Number is Not allow")
+            // }
+            // else if (Name.length < 3) {
+            //     alert("Enter must be 3 character ghjubjn ")
+            // }
+            // else if (Name.length > 15) {
+            //     alert("Enter must be 3 character ghjubjn ")
+            // }
+            // else{
+            //         console.log('Name :', Name)
+            // }
+            // phone validation
+            //    const number = document.forms["myform"]["phoneno"].value;
+            //     if (number < 0 || number < 9) {
+            //         alert("must be  filled ten number");
+
+            //     } else if (isNaN(number)) {
+            //         alert("Enter Must be Digit")
+            //     }
+            //     else if (number.length != 10) {
+            //         alert("10 digit mobile number is required")
+            //     }
+            //     else {
+            //         console.log('Phone No :', number)
+            //         return false;
+            //     }
+        }
+    </script>
+</body>
+
+</html>
